@@ -114,6 +114,7 @@ GPIORead(int pin)
 static int
 GPIOWrite(int pin, int value)
 {
+#define VALUE_MAX 30
 	static const char s_values_str[] = "01";
  
 	char path[VALUE_MAX];
