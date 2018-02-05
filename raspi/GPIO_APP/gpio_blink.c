@@ -139,7 +139,7 @@ GPIOWrite(int pin, int value)
 int
 main(int argc, char *argv[])
 {
-	int repeat = 10;
+	//int repeat = 10;
  
 	/*
 	 * Enable GPIO pins
@@ -153,21 +153,21 @@ main(int argc, char *argv[])
 	if (-1 == GPIODirection(POUT, OUT))
 		return(2);
  
-	do {
+	while(1) {
 		/*
 		 * Write GPIO value
 		 */
-		if (-1 == GPIOWrite(POUT, repeat % 2))
-			return(3);
- 
+		GPIOWrite(POUT, OUT);
+			usleep(500 * 1000);
+		GPIOWrite(POUT,IN);
+			usleep(500 * 1000);
 		/*
 		 * Read GPIO value
 		 */
 		//printf("I'm reading %d in GPIO %d\n", GPIORead(PIN), PIN);
  
-		usleep(500 * 1000);
-	}
-	while (repeat--);
+		
+			}
  
 	/*
 	 * Disable GPIO pins
